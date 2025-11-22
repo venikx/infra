@@ -1,0 +1,58 @@
+#+TITLE: Backup Infrastructure
+
+* TrueNAS Backup Stack
+S3 bucket + IAM user for TrueNAS Cloud Sync.
+
+** Resources
+- *Bucket*: ~truenas-prod-backup-data~
+- *Backup folder*: ~s3://truenas-prod-backup-data/data/~
+- *IAM user*: ~truenas-prod-backup~ (scoped to ~data/~ prefix only)
+- *Secret*: ~truenas-prod-backup-credentials~
+
+** Permissions
+IAM user has access to:
+- ~s3:ListAllMyBuckets~, ~s3:GetBucketLocation~ (required by rclone, read-only)
+- ~s3:ListBucket~ on bucket (prefix ~data/*~ only)
+- ~s3:GetObject~, ~s3:PutObject~, ~s3:DeleteObject~ on ~data/*~ objects only
+
+** Retrieve Credentials
+#+begin_src sh :results output
+aws secretsmanager get-secret-value \
+  --secret-id truenas-prod-backup-credentials \
+  --query SecretString --output text | jq
+#+end_src
+
+Returns:
+- ~accessKeyId~
+- ~secretAccessKey~
+- ~bucketName~
+- ~backupPrefix~
+
+** Bucket Lifecycle
+- Versioning enabled
+- Old versions deleted after 90 days
+- ~removalPolicy: DESTROY~ + ~autoDeleteObjects: true~ → ~cdk destroy~ will delete bucket and contents
+
+** Key Rotation
+1. Create new key
+#+begin_src sh :results output
+aws iam create-access-key --user-name truenas-prod-backup
+#+end_src
+
+2. Update secret
+#+begin_src sh :results output
+aws secretsmanager update-secret \
+  --secret-id truenas-prod-backup-credentials \
+  --secret-string '{"accessKeyId":"NEW...","secretAccessKey":"NEW...","bucketName":"truenas-prod-backup-data","backupPrefix":"data/"}'
+#+end_src
+
+3. Delete old key
+#+begin_src sh :results output
+aws iam delete-access-key \
+  --user-name truenas-prod-backup \
+  --access-key-id OLD_KEY_ID
+#+end_src
+
+** TODO
+- [ ] Add CloudWatch monitoring for backup operations
+- [ ] Consider transition rules for infrequent access storage class

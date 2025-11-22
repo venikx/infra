@@ -1,0 +1,28 @@
+#+TITLE: Core Infrastructure
+
+Foundational infrastructure shared across applications.
+
+* Use core/ for:
+- Networking (VPC, subnets, security groups)
+- Shared IAM roles/policies referenced by multiple stacks
+- Cross-account access
+- Organization-wide policies
+
+* Use application folders for:
+- Purpose-specific IAM users (e.g., ~backup/truenas-backup-stack.ts~)
+- Application-specific resources
+
+* Example Pattern
+#+begin_src typescript
+// core/iam/shared-roles-stack.ts
+export class SharedRolesStack extends cdk.Stack {
+  public readonly lambdaRole: iam.Role;
+  // Export roles for other stacks to import
+}
+
+// deploy.ts
+const shared = new SharedRolesStack(app, 'SharedRoles');
+new AppStack(app, 'App', { lambdaRole: shared.lambdaRole });
+#+end_src
+
+Currently empty.

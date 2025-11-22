@@ -1,0 +1,10 @@
+node_modules
+
+# Environment variables (contains sensitive AWS account info)
+.envrc
+aws/.envrc
+
+# CDK output
+aws/cdk.out/
+aws/*.js
+aws/*.d.ts

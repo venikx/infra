@@ -1,0 +1,13 @@
+#+TITLE: Shared Libraries
+
+* Using ~config.ts~
+#+begin_src typescript
+import { resourceName, standardTags, regions } from '../lib/config';
+
+const userName = resourceName('truenas', 'prod', 'backup');
+const tags = standardTags('truenas', 'prod');
+Object.entries(tags).forEach(([k, v]) => cdk.Tags.of(this).add(k, v));
+#+end_src
+
+* constructs/
+Custom CDK constructs. Currently empty.

@@ -1,0 +1,68 @@
+#+TITLE: AWS Infrastructure
+
+* Setup
+#+begin_src sh
+# Nix environment (provides Node.js 24, AWS CLI)
+nix develop  # from repo root, or use direnv
+
+# Install dependencies
+cd aws && npm install
+
+# Bootstrap CDK
+npx cdk login
+npx cdk bootstrap
+#+end_src
+
+* Commands
+All commands run from ~/aws~ directory:
+
+#+begin_src sh
+npm run synth    # Preview CloudFormation
+npm run diff     # Compare with deployed state
+npm run deploy   # Deploy all stacks
+npm run destroy  # Destroy all stacks
+#+end_src
+
+* Project Structure
+#+begin_src sh :results output :exports results
+tree -L 2 -I 'node_modules|cdk.out' --dirsfirst
+#+end_src
+
+- *backup/*: Backup and disaster recovery resources
+- *core/*: Foundational infrastructure (VPC, IAM roles, security groups) - currently empty
+- *lib/*: Shared utilities (~config.ts~) and custom constructs
+
+See folder-specific README.org files for details.
+
+* Shared Configuration
+See [[file:core/README.org][core/README.org]] for shared infrastructure across applications.
+See [[file:lib/README.org][lib/README.org]] for ~config.ts~ utilities and custom constructs.
+
+* Adding New Stacks
+1. Create stack file in appropriate folder (~backup/~, ~core/~, or new domain folder)
+2. Extend ~cdk.Stack~:
+   #+begin_src typescript
+   import * as cdk from 'aws-cdk-lib';
+   import { Construct } from 'constructs';
+
+   export class NewStack extends cdk.Stack {
+     constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+       super(scope, id, props);
+       // Define resources
+     }
+   }
+   #+end_src
+
+3. Import and instantiate in ~deploy.ts~:
+   #+begin_src typescript
+   import { NewStack } from './folder/new-stack';
+
+   const region = 'eu-north-1';
+
+   new NewStack(app, 'NewStackId', {
+     description: 'Stack description',
+     env: { region },
+   });
+   #+end_src
+
+4. Document in this README and folder-specific README.org

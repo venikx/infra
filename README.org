@@ -1,0 +1,23 @@
+#+TITLE: Personal Infrastructure
+
+Personal cloud infrastructure managed as code.
+
+* What's Here
+AWS infrastructure using CDK + TypeScript:
+- Backup systems for home services
+- Core networking and IAM foundation
+- Reusable constructs and utilities
+
+* Getting Started
+Prerequisites:
+- Nix with flakes enabled
+- direnv
+
+Setup:
+#+begin_src shell
+direnv allow # Loads Nix environment
+#+end_src
+
+** Structure
+- [[file:aws/README.org][aws/README.org]]
+- and [[file:flake.nix][flake.nix]] as the development environment to manage all
