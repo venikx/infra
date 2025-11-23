@@ -1,0 +1,16 @@
+#+TITLE: Mirage (Raspberry Pi 4)
+
+* Overview
+** Specs
+| CPU              | Broadcom BCM2711, Quad core Cortex-A72 (ARM v8) |
+| RAM              | 8GB LPDDR4-3200 SDRAM                           |
+| Internal Storage | 32GB SD Card                                    |
+
+* [[https://nix.dev/tutorials/installing-nixos-on-a-raspberry-pi][Installation]]
+* Deploy
+#+begin_src shell
+scp -r /home/venikx/code/homelab venikx@192.168.1.197:/home/venikx/homelab
+ssh venikx@192.168.1.197
+sudo -i
+nixos-rebuild switch
+#+end_src

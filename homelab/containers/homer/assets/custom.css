@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+/* Custom card colors */
+/* Use with `class:` property of services in config.yml */
+nav.navbar {
+  display: none;
+}
