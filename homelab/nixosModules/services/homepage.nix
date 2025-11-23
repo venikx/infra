@@ -2,7 +2,6 @@
 
 {
   services.homepage-dashboard = {
-    openFirewall = lib.mkIf config.services.homepage-dashboard.enable true;
 
     settings = {
       title = "Homelab Dashboard";
