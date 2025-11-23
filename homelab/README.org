@@ -1,0 +1,73 @@
+#+title: NixOS VM Deployment
+#+PROPERTY: header-args :eval no
+
+* Creating New VMs with nixos-anywhere
+** Prerequisites
+- Target machine with SSH root access
+- NixOS configuration defined in flake
+- Network access to target machine
+
+** Step 1: Add VM Configuration to flake.nix
+First, add your new VM configuration to =../flake.nix=:
+
+#+begin_src nix
+nixosConfigurations = {
+  # ... existing configurations ...
+  
+  vm-prod-media1 = nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules = [
+      disko.nixosModules.disko
+      ./hosts/vm-prod-media1
+      ./nixosModules
+    ];
+  };
+};
+#+end_src
+
+** Step 2: Deploy with nixos-anywhere
+Deploy the VM using nixos-anywhere:
+#+begin_src bash
+nix run github:nix-community/nixos-anywhere -- \
+  --flake ~/code/personal/infra/homelab#host \
+  --target-host root@<IP>
+#+end_src
+
+** Step 3: Initial Setup (Post-deployment)
+After successful deployment, SSH to the new machine and set passwords:
+
+#+begin_src bash
+ssh root@172.19.20.243
+passwd  # Set root password
+#+end_src
+
+* Updating VM Configurations
+** Dry Run (Preview Changes)
+Test configuration changes without applying:
+
+#+begin_src sh :eval no-export
+nixos-rebuild dry-activate --flake ~/code/personal/infra#vm-prod-media1 --target-host homelab.local
+#+end_src
+
+** Local Updates
+Update configurations using nixos-rebuild from local machine:
+
+#+begin_src bash
+nixos-rebuild switch --flake ~/code/personal/infra#vm-prod-media1 --target-host homelab.local
+#+end_src
+
+* Common Operations
+** Check System Status
+#+begin_src bash
+ssh root@<IP> systemctl status
+#+end_src
+
+** View System Logs
+#+begin_src bash
+ssh root@<IP> journalctl -xe
+#+end_src
+
+** Rollback to Previous Generation
+#+begin_src bash :results output :eval no-export
+ssh root@<IP> nixos-rebuild switch --rollback
+#+end_src
