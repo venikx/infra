@@ -40,6 +40,7 @@
 
   # media
   services.calibre-web.enable = true;
+  services.audiobookshelf.enable = true;
   #modules.services.immich.enable = true;
 
   fileSystems = {

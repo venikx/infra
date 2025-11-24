@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./audiobookshelf.nix
     ./calibre-web.nix
     ./homepage.nix
   ];

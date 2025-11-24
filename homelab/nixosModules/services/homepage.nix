@@ -27,7 +27,13 @@
           {
             "Calibre Web" = {
               href = "/calibre";
-              description = "Digital library management";
+              description = "Book library management";
+            };
+          }
+          {
+            "Audiobookshelf" = {
+              href = "/audiobookshelf";
+              description = "Audiobook library management";
             };
           }
         ];
