@@ -23,6 +23,13 @@
               description = "Homepage Dashboard";
             };
           }
+          # TODO(venikx): Abstract this into the module itself
+          {
+            "Calibre Web" = {
+              href = "/calibre";
+              description = "Digital library management";
+            };
+          }
         ];
       }
     ];
