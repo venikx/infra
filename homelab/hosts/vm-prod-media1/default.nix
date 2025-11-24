@@ -40,7 +40,6 @@
 
   # media
   services.calibre-web.enable = true;
-  #services.syncthing.enable = true;
   #modules.services.immich.enable = true;
 
   fileSystems = {
