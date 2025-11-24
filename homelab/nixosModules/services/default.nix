@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./calibre-web.nix
     ./homepage.nix
   ];
 
