@@ -5,6 +5,7 @@
     ./audiobookshelf.nix
     ./calibre-web.nix
     ./homepage.nix
+    ./immich.nix
   ];
 
   networking.firewall.allowedTCPPorts = lib.mkIf config.services.caddy.enable [

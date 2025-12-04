@@ -41,7 +41,7 @@
   # media
   services.calibre-web.enable = true;
   services.audiobookshelf.enable = true;
-  #modules.services.immich.enable = true;
+  services.immich.enable = true;
 
   fileSystems = {
     "/mnt/nas/entertainment" = {
