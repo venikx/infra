@@ -28,9 +28,10 @@ nixosConfigurations = {
 ** Step 2: Deploy with nixos-anywhere
 Deploy the VM using nixos-anywhere:
 #+begin_src bash
-nix run github:nix-community/nixos-anywhere -- \
-  --flake ~/code/personal/infra/homelab#host \
-  --target-host root@<IP>
+nix run github:nix-community/nixos-anywhere -- --generate-hardware-config \                                                         ~
+    nixos-generate-config \
+    ./homelab/hosts/vps-hz-prod-svc1/hardware-configuration.nix \
+    --flake ../#vm-prod-media1 root@172.19.20.243
 #+end_src
 
 ** Step 3: Initial Setup (Post-deployment)
@@ -38,7 +39,6 @@ After successful deployment, SSH to the new machine and set passwords:
 
 #+begin_src bash
 ssh root@172.19.20.243
-passwd  # Set root password
 #+end_src
 
 * Updating VM Configurations
