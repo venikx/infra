@@ -56,9 +56,31 @@ in
     };
 
     virtualHosts."status.${domainName}" = {
-      root = "/run/current-system/sw/share/nginx/html";
       forceSSL = true;
       useACMEHost = "${domainName}";
+      locations = {
+        "/" = {
+          proxyPass = "http://127.0.0.1:${toString config.services.gatus.settings.web.port}";
+          recommendedProxySettings = true;
+        };
+      };
+    };
+  };
+
+  services.gatus = {
+    enable = true;
+    settings = {
+      endpoints = [
+        {
+          name = "personal-site";
+          url = "https://venikx.com";
+          interval = "24h";
+          conditions = [
+            "[STATUS] == 200"
+            "[RESPONSE_TIME] < 500"
+          ];
+        }
+      ];
     };
   };
 
