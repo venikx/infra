@@ -7,7 +7,7 @@
 {
 
   imports = [
-    ../all.nix
+    ../../profiles/deprecated.nix
     ./disko-config.nix
     ./hardware-configuration.nix
   ];
@@ -21,6 +21,13 @@
       efiSupport = true;
       efiInstallAsRemovable = true;
     };
+  };
+
+  age.rekey = {
+    hostPubkey = "";
+    storageMode = "local";
+    masterIdentities = [ "/home/venikx/.ssh/agenix-rekey-thick-yubikey.txt" ];
+    localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
   };
 
   networking = {

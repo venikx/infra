@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./fail2ban.nix
     ./grafana.nix
     ./prometheus.nix
     ./node_exporter.nix
