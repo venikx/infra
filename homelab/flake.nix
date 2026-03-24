@@ -1,5 +1,5 @@
 {
-  description = "personal infra";
+  description = "homelab infra";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
@@ -45,15 +45,6 @@
             pkgs.agenix-rekey
             pkgs.age-plugin-yubikey
           ];
-
-          buildInputs = with pkgs; [
-            nodejs_24
-            awscli2
-          ];
-
-          shellHook = ''
-            	    export PATH="$PWD/node_modules/.bin/:$PATH"
-            	  '';
         };
       }
     ))
@@ -64,30 +55,13 @@
         darwinConfigurations = self.darwinConfigurations or { };
       };
       nixosConfigurations = {
-        # chakra = nixpkgs.lib.nixosSystem {
-        #   # vpn
-        #   system = "x86_64-linux";
-        #   modules = [
-        #     ./hosts/chakra
-        #     ./nixosModules
-        #   ];
-        # };
-
-        # mirage = nixpkgs.lib.nixosSystem {
-        #   system = "aarch64-linux";
-        #   modules = [
-        #     ./hosts/mirage
-        #     nixos-hardware.nixosModules.raspberry-pi-4
-        #     ./nixosModules
-        #   ];
-        # };
         vm-prod-media1 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
             agenix-rekey.nixosModules.default
-            ./homelab/hosts/vm-prod-media1
+            ./hosts/vm-prod-media1
           ];
         };
         vps-hz-prod-svc1 = nixpkgs.lib.nixosSystem {
@@ -97,7 +71,7 @@
             disko.nixosModules.disko
             agenix.nixosModules.default
             agenix-rekey.nixosModules.default
-            ./homelab/hosts/vps-hz-prod-svc1
+            ./hosts/vps-hz-prod-svc1
           ];
         };
       };
