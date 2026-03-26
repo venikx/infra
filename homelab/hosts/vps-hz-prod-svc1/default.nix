@@ -72,9 +72,18 @@ in
     settings = {
       endpoints = [
         {
-          name = "personal-site";
+          name = "developer-site";
           url = "https://venikx.com";
-          interval = "24h";
+          interval = "1h";
+          conditions = [
+            "[STATUS] == 200"
+            "[RESPONSE_TIME] < 500"
+          ];
+        }
+        {
+          name = "photography-site";
+          url = "https://kevinthebard.com";
+          interval = "1h";
           conditions = [
             "[STATUS] == 200"
             "[RESPONSE_TIME] < 500"
