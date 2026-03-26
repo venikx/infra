@@ -5,4 +5,8 @@
     config.services.nginx.defaultHTTPListenPort
     config.services.nginx.defaultSSLListenPort
   ];
+
+  services.nginx = {
+    recommendedOptimisation = lib.mkDefault true;
+  };
 }
