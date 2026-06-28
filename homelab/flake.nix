@@ -17,7 +17,8 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    venikx-site.url = "github:venikx/venikx.com";
+    venikx-site.url = "github:venikx/venikx.com/main";
+    kevinthebard-site.url = "github:venikx/kevinthebard.com/main";
   };
 
   outputs =
@@ -30,6 +31,7 @@
       agenix,
       agenix-rekey,
       venikx-site,
+      kevinthebard-site,
     }:
     (flake-utils.lib.eachDefaultSystem (
       system:
@@ -66,7 +68,7 @@
         };
         vps-hz-prod-svc1 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit venikx-site; };
+          specialArgs = { inherit venikx-site kevinthebard-site; };
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default

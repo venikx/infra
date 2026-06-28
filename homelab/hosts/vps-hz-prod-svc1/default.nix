@@ -4,10 +4,12 @@
   config,
   pkgs,
   venikx-site,
+  kevinthebard-site,
   ...
 }@args:
 let
   domainName = "venikx.com";
+  photographyDomainName = "kevinthebard.com";
 
   imaginaryAddr = "127.0.0.1:8088";
   sourceFolderAddr = "127.0.0.1:8889";
@@ -55,6 +57,9 @@ in
           "status.${domainName}"
         ];
       };
+      "${photographyDomainName}" = {
+        group = config.services.nginx.group;
+      };
     };
   };
 
@@ -65,10 +70,28 @@ in
 
   services.nginx = {
     enable = true;
+
+    virtualHosts."${photographyDomainName}" = {
+      root = kevinthebard-site.packages.${pkgs.system}.default;
+      forceSSL = true;
+      useACMEHost = "${photographyDomainName}";
+      extraConfig = ''
+        limit_req zone=general burst=20 nodelay;
+        error_page 404 /404.html;
+      '';
+
+      locations."/images/" = {
+        extraConfig = imaginaryProxy "kevinthebard";
+      };
+    };
+
     virtualHosts."${domainName}" = {
       root = venikx-site.packages.${pkgs.system}.default;
       forceSSL = true;
       useACMEHost = "${domainName}";
+      extraConfig = ''
+        limit_req zone=general burst=20 nodelay;
+      '';
 
       locations."/images/" = {
         extraConfig = imaginaryProxy "kevinthebard";
@@ -78,6 +101,9 @@ in
     virtualHosts."status.${domainName}" = {
       forceSSL = true;
       useACMEHost = "${domainName}";
+      extraConfig = ''
+        limit_req zone=general burst=20 nodelay;
+      '';
       locations = {
         "/" = {
           proxyPass = "http://127.0.0.1:${toString config.services.gatus.settings.web.port}";
@@ -125,6 +151,7 @@ in
       return-size = true;
       concurrency = 8;
       enable-url-source = true;
+      allowed-origins = "http://${sourceFolderAddr}";
     };
   };
 
