@@ -250,11 +250,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1782688694,
-        "narHash": "sha256-Y8sAghuGVtOJIv2I/xXJ+Xc2K0vpouCFV0pmOdYeOds=",
+        "lastModified": 1782861860,
+        "narHash": "sha256-m/7YXaAYuf2EzsQLx0t2ABsFT2Kin8HK06NQ/PxddUk=",
         "owner": "venikx",
         "repo": "kevinthebard.com",
-        "rev": "6fd8a22a315f0d1d18fea019f0dd6ad3f2e86a76",
+        "rev": "e526ed417c7ccc9b3f04b48df4f7c6425e52e5e8",
         "type": "github"
       },
       "original": {
