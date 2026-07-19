@@ -97,11 +97,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1776613567,
-        "narHash": "sha256-gC9Cp5ibBmGD5awCA9z7xy6MW6iJufhazTYJOiGlCUI=",
+        "lastModified": 1781152676,
+        "narHash": "sha256-RxWs5ND31KzTG7wvMM+PMfUjyNpmIEr999lqNARaM5o=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "32f4236bfc141ae930b5ba2fb604f561fed5219d",
+        "rev": "ff8702b4de27f72b4c78573dfb89ec74e36abdf1",
         "type": "github"
       },
       "original": {
@@ -252,25 +252,28 @@
       "locked": {
         "lastModified": 1782861860,
         "narHash": "sha256-m/7YXaAYuf2EzsQLx0t2ABsFT2Kin8HK06NQ/PxddUk=",
-        "owner": "venikx",
-        "repo": "kevinthebard.com",
+        "ref": "main",
         "rev": "e526ed417c7ccc9b3f04b48df4f7c6425e52e5e8",
-        "type": "github"
+        "revCount": 43,
+        "type": "git",
+        "url": "ssh://git@github.com/venikx/kevinthebard.com"
       },
       "original": {
-        "owner": "venikx",
         "ref": "main",
-        "repo": "kevinthebard.com",
-        "type": "github"
+        "type": "git",
+        "url": "ssh://git@github.com/venikx/kevinthebard.com"
       }
     },
     "nixos-hardware": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
       "locked": {
-        "lastModified": 1776983936,
-        "narHash": "sha256-ZOQyNqSvJ8UdrrqU1p7vaFcdL53idK+LOM8oRWEWh6o=",
+        "lastModified": 1784310968,
+        "narHash": "sha256-rkSPTePrKqs4dg+i7ZFCq93+HrClac6oSwXX927SVjA=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "2096f3f411ce46e88a79ae4eafcfc9df8ed41c61",
+        "rev": "779c32a00155994c86cde8213a8dd4df139d4355",
         "type": "github"
       },
       "original": {
@@ -298,11 +301,24 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1776734388,
-        "narHash": "sha256-vl3dkhlE5gzsItuHoEMVe+DlonsK+0836LIRDnm6MXQ=",
+        "lastModified": 1767892417,
+        "narHash": "sha256-8bW3q88CEg2u4hSP66Vf4lpbLonHz7hqDNBMcCY7E9U=",
+        "rev": "3497aa5c9457a9d88d71fa93a4a8368816fbeeba",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre924538.3497aa5c9457/nixexprs.tar.xz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "10e7ad5bbcb421fe07e3a4ad53a634b0cd57ffac",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
         "type": "github"
       },
       "original": {
@@ -312,7 +328,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1773964973,
         "narHash": "sha256-NV/J+tTER0P5iJhUDL/8HO5MDjDceLQPRUYgdmy5wXw=",
@@ -359,7 +375,7 @@
         "flake-utils": "flake-utils",
         "kevinthebard-site": "kevinthebard-site",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "venikx-site": "venikx-site"
       }
     },
@@ -447,14 +463,14 @@
     "venikx-site": {
       "inputs": {
         "flake-utils": "flake-utils_3",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1774194057,
-        "narHash": "sha256-1t1vSbmAxXiGS5RBuROLMACGHK1nlZP/3CwNvssbGX0=",
+        "lastModified": 1784382945,
+        "narHash": "sha256-WolQYQr0mTzGrMqpVX8JTaNLZhpbyjeV8eQC1NvUFL0=",
         "owner": "venikx",
         "repo": "venikx.com",
-        "rev": "f64b5c9645d7c92f27f2104327f583d5224b0a3b",
+        "rev": "be6f8e0a0773d9d49fd89e7b89668f8a3c7275b8",
         "type": "github"
       },
       "original": {

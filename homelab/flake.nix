@@ -1,6 +1,5 @@
 {
   description = "homelab infra";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
@@ -18,7 +17,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     venikx-site.url = "github:venikx/venikx.com/main";
-    kevinthebard-site.url = "github:venikx/kevinthebard.com/main";
+    kevinthebard-site.url = "git+ssh://git@github.com/venikx/kevinthebard.com?ref=main";
   };
 
   outputs =
@@ -62,7 +61,7 @@
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
+            #agenix-rekey.nixosModules.default
             ./hosts/vm-prod-media1
           ];
         };
@@ -72,7 +71,7 @@
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default
-            agenix-rekey.nixosModules.default
+            #agenix-rekey.nixosModules.default
             ./hosts/vps-hz-prod-svc1
           ];
         };

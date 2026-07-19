@@ -197,10 +197,10 @@ in
   #services.paperless.enable = true;
   #services.paperless.passwordFile = config.age.secrets.secret1.path;
 
-  age.rekey = {
-    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICSnrzlrR9ow0TiDNkgjWgRJsFfXc7rxffURXnTfpxZ+";
-    storageMode = "local";
-    masterIdentities = [ "/home/venikx/.ssh/agenix-rekey-thick-yubikey.txt" ];
-    localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
-  };
+  #age.rekey = {
+  #  hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICSnrzlrR9ow0TiDNkgjWgRJsFfXc7rxffURXnTfpxZ+";
+  #  storageMode = "local";
+  #  masterIdentities = [ "/home/venikx/.ssh/agenix-rekey-thick-yubikey.txt" ];
+  #  localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
+  #};
 }

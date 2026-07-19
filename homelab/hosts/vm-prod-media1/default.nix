@@ -23,12 +23,12 @@
     };
   };
 
-  age.rekey = {
-    hostPubkey = "";
-    storageMode = "local";
-    masterIdentities = [ "/home/venikx/.ssh/agenix-rekey-thick-yubikey.txt" ];
-    localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
-  };
+  #age.rekey = {
+  #  hostPubkey = "";
+  #  storageMode = "local";
+  #  masterIdentities = [ "/home/venikx/.ssh/agenix-rekey-thick-yubikey.txt" ];
+  #  localStorageDir = ./. + "/secrets/rekeyed/${config.networking.hostName}";
+  #};
 
   networking = {
     hostName = "vm-prod-media1";
