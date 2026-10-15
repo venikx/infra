@@ -18,6 +18,10 @@
     };
     venikx-site.url = "github:venikx/venikx.com/main";
     kevinthebard-site.url = "git+ssh://git@github.com/venikx/kevinthebard.com?ref=main";
+    braindump = {
+      url = "git+ssh://git@github.com/venikx/braindump?ref=main";
+      flake = false;
+    };
   };
 
   outputs =
@@ -31,6 +35,7 @@
       agenix-rekey,
       venikx-site,
       kevinthebard-site,
+      braindump,
     }:
     (flake-utils.lib.eachDefaultSystem (
       system:
@@ -67,7 +72,7 @@
         };
         vps-hz-prod-svc1 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit venikx-site kevinthebard-site; };
+          specialArgs = { inherit venikx-site kevinthebard-site braindump; };
           modules = [
             disko.nixosModules.disko
             agenix.nixosModules.default

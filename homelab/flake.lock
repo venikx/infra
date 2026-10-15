@@ -47,6 +47,23 @@
         "type": "github"
       }
     },
+    "braindump": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792105112,
+        "narHash": "sha256-Yqq6n/HTHwGACyiVvgClaziChFCuoVcW7NcsRV642OM=",
+        "ref": "main",
+        "rev": "a32e7ee47f19a24ddc4c37304e5b10a52d1f5841",
+        "revCount": 15,
+        "type": "git",
+        "url": "ssh://git@github.com/venikx/braindump"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/venikx/braindump"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -371,6 +388,7 @@
       "inputs": {
         "agenix": "agenix",
         "agenix-rekey": "agenix-rekey",
+        "braindump": "braindump",
         "disko": "disko",
         "flake-utils": "flake-utils",
         "kevinthebard-site": "kevinthebard-site",
@@ -466,11 +484,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1784382945,
-        "narHash": "sha256-WolQYQr0mTzGrMqpVX8JTaNLZhpbyjeV8eQC1NvUFL0=",
+        "lastModified": 1792105549,
+        "narHash": "sha256-dFxGU/x0ULXHXpXxcE9hBObG8HAWctoK0kH8vWZxvCc=",
         "owner": "venikx",
         "repo": "venikx.com",
-        "rev": "be6f8e0a0773d9d49fd89e7b89668f8a3c7275b8",
+        "rev": "57147241f30a2c3ddec6ba41eacf4e5302554977",
         "type": "github"
       },
       "original": {

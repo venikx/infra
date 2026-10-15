@@ -5,6 +5,7 @@
   pkgs,
   venikx-site,
   kevinthebard-site,
+  braindump,
   ...
 }@args:
 let
@@ -86,7 +87,9 @@ in
     };
 
     virtualHosts."${domainName}" = {
-      root = venikx-site.packages.${pkgs.system}.default;
+      root = venikx-site.packages.${pkgs.system}.default.overrideAttrs {
+        BRAINDUMP_DIR = braindump;
+      };
       forceSSL = true;
       useACMEHost = "${domainName}";
       extraConfig = ''
