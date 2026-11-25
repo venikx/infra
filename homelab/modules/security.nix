@@ -51,6 +51,8 @@
 
   services.openssh = {
     enable = true;
+    # only accept keys declared in nix, ignore ~/.ssh/authorized_keys
+    authorizedKeysInHomedir = false;
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "prohibit-password";
