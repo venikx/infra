@@ -55,6 +55,8 @@
     authorizedKeysInHomedir = false;
     settings = {
       PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+      AuthenticationMethods = "publickey";
       PermitRootLogin = "prohibit-password";
     };
   };
