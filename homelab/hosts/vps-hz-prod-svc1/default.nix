@@ -16,6 +16,9 @@ let
   sourceFolderAddr = "127.0.0.1:8889";
 
   imaginaryProxy = site: ''
+    # imaginary decodes POST bodies regardless of allowed-origins
+    limit_except GET { deny all; }
+
     rewrite "^.+/(?P<img_width>[0-9]+)/(?P<img_file>.*)$" /resize?width=$img_width&url=http://${sourceFolderAddr}/${site}/$img_file$img_type break;
 
     proxy_pass http://${imaginaryAddr};
