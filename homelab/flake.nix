@@ -1,7 +1,7 @@
 {
   description = "homelab infra";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixos-hardware.url = "github:nixos/nixos-hardware/master";
     flake-utils.url = "github:numtide/flake-utils";
     agenix = {
