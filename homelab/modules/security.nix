@@ -68,5 +68,12 @@
 
   services.avahi.enable = false;
   services.printing.enable = false;
-  services.fail2ban.enable = lib.mkDefault true;
+  services.fail2ban = {
+    enable = lib.mkDefault true;
+    bantime-increment = {
+      enable = true;
+      maxtime = "1d";
+    };
+    daemonSettings.Definition.dbpurgeage = "30d";
+  };
 }
