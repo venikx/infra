@@ -164,6 +164,10 @@ in
   services.gatus = {
     enable = true;
     settings = {
+      storage = {
+        type = "sqlite";
+        path = "/var/lib/gatus/data.db";
+      };
       endpoints = [
         {
           name = "developer-site";
